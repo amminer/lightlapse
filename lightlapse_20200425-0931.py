@@ -15,7 +15,7 @@ _   _   _l/```````````````````````````````````
    / \
 
 Using pathlib also probably a good idea.
-Using loggin module also probably a good idea.
+Using logging module also probably a good idea.
 Would be cool to make timer automatically update when a combobox is changed?
 Pipe? Queue?
 
