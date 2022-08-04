@@ -14,6 +14,7 @@ _   _   _l/```````````````````````````````````
    |_|
    / \
 
+Need to add camera rotation setting.
 Using pathlib also probably a good idea.
 Using logging module also probably a good idea.
 Would be cool to make timer automatically update when a combobox is changed?
@@ -40,13 +41,13 @@ def log(msg):
     print(msg)
 
 try:
+    windows = False
     import RPi.GPIO as GPIO
     GPIO.setwarnings(False)
     from picamera import PiCamera
-    windows = False
-except ImportError:
-    log('not running on rpi, must be windows, setting flag')
+except Exception:
     windows = True
+    log('not running on rpi, setting flag...')
 
 hrs = [('0' + str(hr))[-2:] for hr in range(24)][::]
 mins = [('0' + str(min_))[-2:] for min_ in range(60)][::]
@@ -204,7 +205,7 @@ def timelapse():
         log('windows, timelapse ignored')
     else:
         cam = PiCamera()
-        cam.rotation = 270
+        cam.rotation = 90
         atexit.register(cam.close)
         log('timelapse started')
 
